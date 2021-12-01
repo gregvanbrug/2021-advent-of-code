@@ -7,5 +7,3 @@ in Typescript.
 `npm test` to run tests
 
 `npm run dev` to start in development mode
-
-🎅🎄

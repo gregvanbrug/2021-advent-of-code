@@ -45,6 +45,7 @@ up 1`;
       depth: 1,
       horizontalPosition: 1
     };
+
     const instructions = getInstructions(input);
     const actual = maneuver(instructions);
 

@@ -1,6 +1,6 @@
 {
   "name": "2021-advent-of-code",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Advent of Code 2021",
   "scripts": {
     "dev": "nodemon",

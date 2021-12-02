@@ -59,18 +59,37 @@ function maneuver(instructions: Instruction[]): Position {
   return position;
 }
 
+function validInstruction(instruction: string): boolean {
+  const allowed: Array<string> = Object.values(Direction);
+  return Object.values(allowed).includes(instruction);
+}
+
 function getInstructions(input: string): Instruction[] {
-  return input.split('\n').map((item: string): Instruction => {
-    const instruction = item.split(' ');
-    return {
-      direction: instruction[0] as Direction,
-      value: +instruction[1]
-    };
-  });
+  return input
+    .split('\n')
+    .map((item: string): Instruction => {
+      const instruction = item.split(' ');
+      return {
+        direction: instruction[0] as Direction,
+        value: +instruction[1]
+      };
+    })
+    .filter(item => {
+      if (validInstruction(item.direction)) {
+        return item;
+      }
+    });
 }
 
 function getInput(file: string): string {
   return readFileSync(file, { encoding: 'utf-8' }).trim();
 }
 
-export { getInput, getInstructions, maneuver };
+export {
+  Direction,
+  Instruction,
+  getInput,
+  validInstruction,
+  getInstructions,
+  maneuver
+};

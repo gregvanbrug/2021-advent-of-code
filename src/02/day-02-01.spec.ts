@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { getInstructions, maneuver } from './day-02-01';
+import { getInstructions, maneuver, validInstruction } from './day-02-01';
 
 describe('Day 02 - Part 1', () => {
   let input = `forward 1
@@ -13,6 +13,24 @@ up 1`;
       { direction: 'down', value: 1 },
       { direction: 'up', value: 1 }
     ];
+    const actual = getInstructions(input);
+
+    expect(expected).to.deep.equal(actual);
+  });
+
+  it('should validate an instruction', () => {
+    const forward = validInstruction('forward');
+    expect(forward).to.be.true;
+
+    const backward = validInstruction('backward');
+    expect(backward).to.be.false;
+  });
+
+  it('should only provide valid instructions', () => {
+    input = `forward 1
+backward 1`;
+
+    const expected = [{ direction: 'forward', value: 1 }];
     const actual = getInstructions(input);
 
     expect(expected).to.deep.equal(actual);

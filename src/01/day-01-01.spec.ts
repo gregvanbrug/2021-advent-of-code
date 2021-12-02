@@ -1,4 +1,5 @@
 import { expect } from 'chai';
+import { benchmark } from 'kelonio';
 
 import { sonarSweep } from './day-01-01';
 
@@ -28,5 +29,11 @@ describe('Day 01 - Part 1', () => {
     const actual = sonarSweep(arr);
 
     expect(expected).to.equal(actual);
+  });
+
+  afterEach(async () => {
+    await benchmark.record(() => sonarSweep(arr), {
+      iterations: 10
+    });
   });
 });

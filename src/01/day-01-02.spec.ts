@@ -1,4 +1,5 @@
 import { expect } from 'chai';
+import { benchmark } from 'kelonio';
 
 import { sonarSweep } from './day-01-01';
 import { createGroups } from './day-01-02';
@@ -9,6 +10,7 @@ describe('Day 01 - Part 2', () => {
   it('should count the number of times the sum of the current group is more than the previous', () => {
     arr = [1, 2, 3, 4, 5, 6];
     // 6, 9, 12, 15
+
     const expected = 3;
 
     const groups = createGroups(arr);
@@ -27,5 +29,11 @@ describe('Day 01 - Part 2', () => {
     const actual = sonarSweep(groups);
 
     expect(expected).to.equal(actual);
+  });
+
+  afterEach(async () => {
+    await benchmark.record(() => sonarSweep(arr), {
+      iterations: 10
+    });
   });
 });

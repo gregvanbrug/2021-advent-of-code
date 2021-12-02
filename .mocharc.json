@@ -1,5 +1,7 @@
 {
   "extension": ["ts"],
   "spec": "src/**/*.spec.ts",
-  "require": "ts-node/register"
+  "require": "ts-node/register",
+  "reporter": ["mocha-multi"],
+  "reporterOptions": ["mocha-multi=.mocha-multi.json"]
 }
